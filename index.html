@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ValSecurity - Sécurité Professionnelle</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS */
+        :root {
+            --val-blue: #0056b3;
+            --val-dark: #1a1a2e;
+            --val-accent: #ff7f00;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .navbar {
+            background-color: var(--val-dark);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: white !important;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            font-weight: 500;
+            margin: 0 8px;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--val-accent) !important;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn-val {
+            background-color: var(--val-accent);
+            color: white;
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 30px;
+            border: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-val:hover {
+            background-color: #e67300;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            font-weight: 700;
+            color: var(--val-dark);
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--val-accent);
+        }
+        
+        .service-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            margin-bottom: 30px;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--val-accent);
+            margin-bottom: 20px;
+        }
+        
+        .about-img {
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        
+        .footer {
+            background-color: var(--val-dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-title {
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+        }
+        
+        .footer-link:hover {
+            color: var(--val-accent);
+            padding-left: 5px;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--val-accent);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Page specific styles */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .breadcrumb {
+            background-color: transparent;
+            justify-content: center;
+        }
+        
+        .breadcrumb-item a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+        
+        .breadcrumb-item.active {
+            color: var(--val-accent);
+        }
+        
+        .breadcrumb-item+.breadcrumb-item::before {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .team-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            margin-bottom: 30px;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .team-img {
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .contact-info-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--val-accent);
+            margin-bottom: 20px;
+        }
+        
+        .form-control {
+            padding: 12px 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+        }
+        
+        .form-control:focus {
+            box-shadow: none;
+            border-color: var(--val-accent);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span style="color: var(--val-accent);">Val</span>Security
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">À Propos</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                            <li><a class="dropdown-item" href="services.html">Tous les Services</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="service-surveillance.html">Surveillance 24/7</a></li>
+                            <li><a class="dropdown-item" href="service-alarmes.html">Systèmes d'Alarme</a></li>
+                            <li><a class="dropdown-item" href="service-cybersecurite.html">Cybersécurité</a></li>
+                            <li><a class="dropdown-item" href="service-protection-rapprochee.html">Protection Rapprochée</a></li>
+                            <li><a class="dropdown-item" href="service-consulting.html">Consulting en Sécurité</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="team.html">Notre Équipe</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <a href="tel:+243897341429" class="btn btn-val ms-lg-3">Appelez-nous</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">Protection Professionnelle pour Votre Sécurité</h1>
+            <p class="hero-subtitle">Solutions de sécurité sur mesure pour les particuliers et les entreprises</p>
+            <a href="contact.html" class="btn btn-val me-2">Demander un Devis</a>
+            <a href="services.html" class="btn btn-outline-light">Nos Services</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="securité 1.jpeg" alt="À propos de ValSecurity" class="img-fluid about-img">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="section-title text-start">À Propos de <span style="color: var(--val-accent);">Val</span>Security</h2>
+                    <p class="lead">Leader dans le domaine de la sécurité depuis 2010, ValSecurity offre des solutions complètes pour protéger ce qui compte le plus pour vous.</p>
+                    <p>Notre entreprise a été fondée par Valentin Botoko avec pour mission de fournir des services de sécurité de haute qualité, adaptés aux besoins spécifiques de chaque client. Nous combinons technologie de pointe avec des professionnels expérimentés pour garantir votre tranquillité d'esprit.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Plus de 12 ans d'expérience</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Équipe hautement qualifiée</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Technologies de pointe</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Service client 24/7</li>
+                    </ul>
+                    <a href="about.html" class="btn btn-val mt-3">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-5 bg-primary">
+        <div class="container py-5">
+            <h2 class="section-title text-center">Nos Services</h2>
+            <p class="text-center mb-5">Nous offrons une gamme complète de services de sécurité pour répondre à tous vos besoins.</p>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card service-card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <h4>Surveillance 24/7</h4>
+                            <p>Surveillance continue de vos biens par notre équipe et nos systèmes avancés de vidéosurveillance.</p>
+                            <a href="service-surveillance.html" class="btn btn-outline-primary">Détails</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mt-3">
+                    <div class="card service-card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <h4>Systèmes d'Alarme</h4>
+                            <p>Installation et maintenance de systèmes d'alarme haute performance pour votre domicile ou entreprise.</p>
+                            <a href="service-alarmes.html" class="btn btn-outline-primary">Détails</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mt-3">
+                    <div class="card service-card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4>Cybersécurité</h4>
+                            <p>Protection de vos données et systèmes informatiques contre les cybermenaces et attaques en ligne.</p>
+                            <a href="service-cybersecurite.html" class="btn btn-outline-primary">Détails</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4 mt-3">
+                <div class="col-md-4">
+                    <div class="card service-card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
+                            <h4>Protection Rapprochée</h4>
+                            <p>Services de protection personnelle pour VIP, dirigeants et personnalités publiques.</p>
+                            <a href="service-protection-rapprochee.html" class="btn btn-outline-primary">Détails</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mt-3">
+                    <div class="card service-card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h4>Enquêtes Privées</h4>
+                            <p>Services d'enquête professionnels pour affaires personnelles ou commerciales.</p>
+                            <a href="service-enquetes.html" class="btn btn-outline-primary">Détails</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mt-3">
+                    <div class="card service-card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h4>Consulting en Sécurité</h4>
+                            <p>Évaluation et amélioration de vos mesures de sécurité existantes par nos experts.</p>
+                            <a href="service-consulting.html" class="btn btn-outline-primary">Détails</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="services.html" class="btn btn-val">Voir tous nos services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-5 bg-primary">
+        <div class="container py-5">
+            <h2 class="section-title text-center">Pourquoi Choisir ValSecurity?</h2>
+            
+            <div class="row mt-5">
+                <div class="col-lg-4 mb-4">
+                    <div class="d-flex">
+                        <div class="me-4">
+                            <i class="fas fa-star fa-2x text-warning"></i>
+                        </div>
+                        <div>
+                            <h4>Excellence Reconnue</h4>
+                            <p>Certifiés et primés à plusieurs reprises pour la qualité de nos services et la satisfaction de nos clients.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <div class="d-flex">
+                        <div class="me-4">
+                            <i class="fas fa-users fa-2x text-primary"></i>
+                        </div>
+                        <div>
+                            <h4>Équipe Expérimentée</h4>
+                            <p>Nos professionnels sont rigoureusement sélectionnés et formés aux dernières techniques de sécurité.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <div class="d-flex">
+                        <div class="me-4">
+                            <i class="fas fa-cogs fa-2x text-success"></i>
+                        </div>
+                        <div>
+                            <h4>Technologie Avancée</h4>
+                            <p>Nous utilisons des équipements de dernière génération pour une protection optimale.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <div class="d-flex">
+                        <div class="me-4">
+                            <i class="fas fa-headset fa-2x text-info"></i>
+                        </div>
+                        <div>
+                            <h4>Support 24/7</h4>
+                            <p>Notre centre d'opérations est opérationnel en permanence pour répondre à vos besoins.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <div class="d-flex">
+                        <div class="me-4">
+                            <i class="fas fa-lock fa-2x text-danger"></i>
+                        </div>
+                        <div>
+                            <h4>Approche Personnalisée</h4>
+                            <p>Chaque solution est adaptée spécifiquement à vos besoins et à votre situation.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <div class="d-flex">
+                        <div class="me-4">
+                            <i class="fas fa-hand-holding-usd fa-2x text-secondary"></i>
+                        </div>
+                        <div>
+                            <h4>Rapport Qualité-Prix</h4>
+                            <p>Services haut de gamme à des tarifs compétitifs avec différentes options de financement.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5">
+        <div class="container py-5">
+            <h2 class="section-title text-center">Ce Que Disent Nos Clients</h2>
+            
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <img src="Valentin.jpg" alt="Client 1" class="testimonial-img mx-auto d-block">
+                        <p class="text-center mb-4">"ValSecurity a protégé notre entreprise pendant plus de 5 ans. Leur professionnalisme est exceptionnel."</p>
+                        <div class="text-center">
+                            <h5>Roger botoko</h5>
+                            <p class="text-muted">Directeur, Entreprise XYZ</p>
+                            <div class="text-warning">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <img src="JONATHAN.jpg" alt="Client 2" class="testimonial-img mx-auto d-block">
+                        <p class="text-center mb-4">"Leur système d'alarme a empêché un cambriolage chez moi. Je les recommande vivement!"</p>
+                        <div class="text-center">
+                            <h5>Jonathan BOTOKO</h5>
+                            <p class="text-muted">Particulier</p>
+                            <div class="text-warning">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <img src="SECURITE 3.jpeg" alt="Client 3" class="testimonial-img mx-auto d-block">
+                        <p class="text-center mb-4">"Leur service de cybersécurité a protégé nos données sensibles contre plusieurs attaques."</p>
+                        <div class="text-center">
+                            <h5>Romany Luemba</h5>
+                            <p class="text-muted">PDG, Société ABC</p>
+                            <div class="text-warning">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container py-5 text-center">
+            <h2 class="mb-4">Prêt à Renforcer Votre Sécurité?</h2>
+            <p class="lead mb-5">Contactez-nous dès aujourd'hui pour une consultation gratuite et sans engagement.</p>
+            <a href="contact.html" class="btn btn-light btn-lg me-3">Contactez-nous</a>
+            <a href="tel:+243897341429" class="btn btn-outline-light btn-lg">Appelez-nous</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <h3 class="footer-title"><span style="color: var(--val-accent);">Val</span>Security</h3>
+                    <p class="mb-4">Leader en solutions de sécurité intégrées depuis 2010. Nous protégeons ce qui compte le plus pour vous.</p>
+                    <div class="mb-4">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-5 mb-md-0">
+                    <h4 class="footer-title">Liens Rapides</h4>
+                    <a href="index.html" class="footer-link">Accueil</a>
+                    <a href="about.html" class="footer-link">À Propos</a>
+                    <a href="services.html" class="footer-link">Services</a>
+                    <a href="team.html" class="footer-link">Notre Équipe</a>
+                    <a href="contact.html" class="footer-link">Contact</a>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+                    <h4 class="footer-title">Nos Services</h4>
+                    <a href="service-surveillance.html" class="footer-link">Surveillance 24/7</a>
+                    <a href="service-alarmes.html" class="footer-link">Systèmes d'Alarme</a>
+                    <a href="service-cybersecurite.html" class="footer-link">Cybersécurité</a>
+                    <a href="service-protection-rapprochee.html" class="footer-link">Protection Rapprochée</a>
+                    <a href="service-consulting.html" class="footer-link">Consulting en Sécurité</a>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="footer-title">Contactez-nous</h4>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> Kinshasa, République Démocratique du Congo</p>
+                    <p><i class="fas fa-phone me-2"></i> +243 897 341 429</p>
+                    <p><i class="fas fa-phone me-2"></i> +243 825 647 602</p>
+                    <p><i class="fas fa-envelope me-2"></i> valentinbotoko36@gmail.com</p>
+                </div>
+            </div>
+            
+            <div class="copyright text-center">
+                <p>&copy; 2023 ValSecurity. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
